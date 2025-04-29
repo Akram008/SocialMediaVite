@@ -7,7 +7,7 @@ export default defineConfig({
   server:{
     proxy: {
       '/api':  {
-        target: "http://localhost:5000", // Backend URL
+        target: "https://social-media-backend-1-vek9.onrender.com", // Backend URL
         changeOrigin: true,
         secure: false,
       },
