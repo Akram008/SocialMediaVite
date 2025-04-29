@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import Part1 from '../../components/SignUpFields/part1'
+import Part1 from '../../components/SignUpFields/Part1'
 import Part2 from '../../components/SignUpFields/Part2'
 import Part3 from '../../components/SignUpFields/Part3'
 import Part4 from '../../components/SignUpFields/Part4'
