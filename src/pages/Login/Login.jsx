@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post('/api/v1/users/login', {username: username, password: password}, {withCredentials: true})
+      const response = await axios.post('https://social-media-backend-1-vek9.onrender.com/api/v1/users/login', {username: username, password: password}, {withCredentials: true})
       console.log(response) 
       navigate('/')
       window.location.reload()
