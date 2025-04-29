@@ -10,7 +10,7 @@ const Home = ()=>{
 
     useEffect(()=>{
         const fetchedPosts = async() => {
-            const response = await axios.get('/api/v1/posts/feedPosts')
+            const response = await axios.get('https://social-media-backend-1-vek9.onrender.com/api/v1/posts/feedPosts')
             setFeedPosts(response.data.data)
         }
         fetchedPosts()
