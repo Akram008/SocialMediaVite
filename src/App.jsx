@@ -10,7 +10,7 @@ import Sidebar from './components/Sidebar/Sidebar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import Header from './components/Header/Header'
 import SearchUser from './pages/Search/Search'
-import OtherUserProfile from './pages/Profile/otherUserProfile'
+import OtherUserProfile from './pages/Profile/OtherUserProfile'
 import Notification from './pages/Notification/Notification'
 import CommentSection from './components/Comments/CommentSection'
 
