@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +18,7 @@ const Login = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post('https://social-media-backend-1-vek9.onrender.com/api/v1/users/login', {username: username, password: password}, {withCredentials: true})
+      const response = await axios.post(`${API_BASE}/api/v1/users/login`, {username: username, password: password}, {withCredentials: true})
       console.log(response) 
       navigate('/')
       window.location.reload()

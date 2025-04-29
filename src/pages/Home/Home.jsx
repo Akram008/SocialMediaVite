@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import {React, useEffect, useState } from "react"
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import FeedContainer from "../../components/FeedContainer/FeedContainer.jsx"
 import Header from "../../components/Header/Header.jsx"
 import NavigationTab from "../../components/NavigationTab/NavigationTab.jsx"
@@ -10,7 +11,7 @@ const Home = ()=>{
 
     useEffect(()=>{
         const fetchedPosts = async() => {
-            const response = await axios.get('https://social-media-backend-1-vek9.onrender.com/api/v1/posts/feedPosts')
+            const response = await axios.get(`${API_BASE}/api/v1/posts/feedPosts`)
             setFeedPosts(response.data.data)
         }
         fetchedPosts()
