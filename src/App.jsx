@@ -20,7 +20,7 @@ function App() {
     <>
       <Sidebar/>
       <Routes>
-        <Route path='/login' element={<Login/>} />
+        <Route path='https://social-media-vite-6wyf.vercel.app/login' element={<Login/>} />
         <Route path='/sign-up' element={<SignUp/>} />
         <Route element={<ProtectedRoute/>}>
           <Route path='/' element={<Home/>} />
