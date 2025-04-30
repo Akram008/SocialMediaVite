@@ -10,7 +10,7 @@ const ProtectedRoute = () => {
     const fetchAuthentication = async() => {
       const isAuthenticateRes = await axios.get(`${API_BASE}/api/v1/users/me`, {withCredentials: true})
       console.log(isAuthenticateRes)
-      isAuthenticateRes.data.success ? setAccessGiven(true) : setAccessGiven(false)
+      isAuthenticateRes.data.success === true ? setAccessGiven(true) : setAccessGiven(false)
     }
   
     
