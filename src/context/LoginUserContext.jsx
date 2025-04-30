@@ -12,7 +12,7 @@ export function LoggedInProvider({children}){
     useEffect(() => {
       const fetchedLogginUser = async() =>{
         try {
-            const response = await axios.get(`${API_BASE}/api/v1/users/current-user`)   
+            const response = await axios.get(`${API_BASE}/api/v1/users/current-user`, {withCredentials: true})   
             setLoggedInUser(response.data.data)
         } catch (error) {
             console.log(error)
