@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 const API_BASE = import.meta.env.VITE_API_BASE_URL
 import Cookies from 'js-cookie'
+import axios from 'axios'
 import { Navigate, Outlet } from 'react-router-dom'
 
 const ProtectedRoute = () => {
