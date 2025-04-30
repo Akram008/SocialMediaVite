@@ -6,6 +6,8 @@ const ProtectedRoute = () => {
   const [accessGiven, setAccessGiven] = useState(true)
   const token = Cookies.get('accessToken')
 
+  console.log(token)
+
   return accessGiven ? <Outlet/> : <Navigate to='/login' replace/> 
 }
 
