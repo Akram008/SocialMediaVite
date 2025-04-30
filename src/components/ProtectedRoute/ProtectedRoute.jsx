@@ -16,6 +16,7 @@ const ProtectedRoute = () => {
     
     fetchAuthentication()
   },[])
+  console.log(accessGiven)
 
 
   return accessGiven ? <Outlet/> : <Navigate to='/login' replace/> 
