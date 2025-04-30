@@ -20,13 +20,13 @@ const OtherUserProfile = () => {
 
     useEffect(()=>{
         const fetchUserData = async() => {
-            const response = await axios.get(`${API_BASE}/api/v1/users/${userId}`)
+            const response = await axios.get(`${API_BASE}/api/v1/users/${userId}`, {withCredentials: true})
             setUserData(response.data.data)
 
-            const postsResponse = await axios.get(`${API_BASE}/api/v1/posts/userPosts/${userId}`)
+            const postsResponse = await axios.get(`${API_BASE}/api/v1/posts/userPosts/${userId}`, {withCredentials: true})
             setUserPosts(postsResponse.data.data)
 
-            const isTrackResponse = await axios.get(`${API_BASE}/api/v1/tracks/isTrack/${userId}`)
+            const isTrackResponse = await axios.get(`${API_BASE}/api/v1/tracks/isTrack/${userId}`, {withCredentials: true})
             setIsTracked(isTrackResponse.data.data)
         }
         
@@ -37,8 +37,8 @@ const OtherUserProfile = () => {
 
     useEffect(()=>{
         const fetchUserTracks = async()=>{
-            const trackersResponse = await axios.get(`${API_BASE}/api/v1/tracks/userTrackers/${userId}`) 
-            const trackingsResponse = await axios.get(`${API_BASE}/api/v1/tracks/userTrackings/${userId}`) 
+            const trackersResponse = await axios.get(`${API_BASE}/api/v1/tracks/userTrackers/${userId}`, {withCredentials: true}) 
+            const trackingsResponse = await axios.get(`${API_BASE}/api/v1/tracks/userTrackings/${userId}`, {withCredentials: true}) 
             
             setTracksData({trackers: trackersResponse.data.data, trackings: trackingsResponse.data.data})
         }
@@ -47,9 +47,9 @@ const OtherUserProfile = () => {
     },[isTracked])
 
     const handleTrack = async () =>{
-        const response = await axios.post(`${API_BASE}/api/v1/tracks/trackUser/${userId}`) 
+        const response = await axios.post(`${API_BASE}/api/v1/tracks/trackUser/${userId}`, {withCredentials: true}) 
 
-        const isTrackResponse = await axios.get(`${API_BASE}/api/v1/tracks/isTrack/${userId}`)
+        const isTrackResponse = await axios.get(`${API_BASE}/api/v1/tracks/isTrack/${userId}`, {withCredentials: true})
         setIsTracked(isTrackResponse.data.data)
     }
 

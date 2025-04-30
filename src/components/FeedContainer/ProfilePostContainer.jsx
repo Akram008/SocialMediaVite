@@ -16,7 +16,7 @@ const ProfilePostContainer = (props) => {
 
   useEffect(()=>{
     const fetchLike = async ()=>{
-      const response = await axios.get(`${API_BASE}/api/v1/likes/isLiked/${post._id}`) 
+      const response = await axios.get(`${API_BASE}/api/v1/likes/isLiked/${post._id}`, {withCredentials: true}) 
       setIsLiked(response.data.data)
     }  
 

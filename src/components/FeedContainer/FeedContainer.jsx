@@ -16,7 +16,7 @@ const FeedContainer = (props) => {
 
   useEffect(()=>{
     const fetchLike = async ()=>{
-      const response = await axios.get(`${API_BASE}/api/v1/likes/isLiked/${feed._id}`) 
+      const response = await axios.get(`${API_BASE}/api/v1/likes/isLiked/${feed._id}`, {withCredentials: true}) 
       setIsLiked(response.data.data)
     }  
 

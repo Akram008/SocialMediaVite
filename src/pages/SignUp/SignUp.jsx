@@ -35,7 +35,7 @@ const SignUp = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post(`${API_BASE}/api/v1/users/register`, userDetails, {
+      const response = await axios.post(`${API_BASE}/api/v1/users/register`, userDetails, {withCredentials: true}, {
         headers: {"Content-Type": "multipart/form-data"}
       })
       console.log(response.data.message)

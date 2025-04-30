@@ -39,7 +39,7 @@ const CommentSection = (props) => {
   const handleCommentSubmit = async (e) => {
     e.preventDefault() 
 
-    const newCommentRes = await axios.post(`${API_BASE}/api/v1/comments/addComment/${feedId}`, {comment: newComment}) 
+    const newCommentRes = await axios.post(`${API_BASE}/api/v1/comments/addComment/${feedId}`, {comment: newComment}, {withCredentials: true}) 
     setLatestComment(newCommentRes.data.data)
     setNewComment('')
   }
