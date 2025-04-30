@@ -25,7 +25,7 @@ const UserProfile = () => {
   useEffect(()=>{
     const fetchUserTracks = async()=>{
         const trackersResponse = await axios.get(`${API_BASE}/api/v1/tracks/loggedInUserTrackers`, {withCredentials: true}) 
-        const trackingsResponse = await axios.get(`${API_BASE}/api/v1/tracks/loggedInUserTrackings`, {withCredentials}) 
+        const trackingsResponse = await axios.get(`${API_BASE}/api/v1/tracks/loggedInUserTrackings`, {withCredentials: true}) 
         
         setTracksData({trackers: trackersResponse.data.data, trackings: trackingsResponse.data.data})
     }

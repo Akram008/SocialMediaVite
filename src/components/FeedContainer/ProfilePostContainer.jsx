@@ -25,7 +25,7 @@ const ProfilePostContainer = (props) => {
 
   useEffect(() => {
     const fetchTotalLikes = async()=>{
-      const totalLikes = await axios.get(`${API_BASE}/api/v1/likes/totalLikes/${post._id}`)
+      const totalLikes = await axios.get(`${API_BASE}/api/v1/likes/totalLikes/${post._id}`, {withCredentials: true})
       setTotalLikes(totalLikes.data.data)
     }
 
@@ -34,9 +34,9 @@ const ProfilePostContainer = (props) => {
   
 
   const handleLike = async () =>{
-    const likeResponse = await axios.post(`${API_BASE}/api/v1/likes/toggleLike/${post._id}`) 
+    const likeResponse = await axios.post(`${API_BASE}/api/v1/likes/toggleLike/${post._id}`, {withCredentials: true}) 
 
-    const isLikedResponse = await axios.get(`${API_BASE}/api/v1/likes/isLiked/${post._id}`)
+    const isLikedResponse = await axios.get(`${API_BASE}/api/v1/likes/isLiked/${post._id}`, {withCredentials: true})
     setIsLiked(isLikedResponse.data.data)
   }
 
