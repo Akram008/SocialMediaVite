@@ -11,7 +11,7 @@ const Home = ()=>{
 
     useEffect(()=>{
         const fetchedPosts = async() => {
-            const response = await axios.get(`${API_BASE}/api/v1/posts/feedPosts`)
+            const response = await axios.get(`${API_BASE}/api/v1/posts/feedPosts`, {withCredentials: true})
             setFeedPosts(response.data.data)
         }
         fetchedPosts()

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import NavigationTab from '../../components/NavigationTab/NavigationTab'
 import { IoSearchOutline } from "react-icons/io5";
 import SeachProfileContainer from '../../components/SearchProfileContainer/SeachProfileContainer';
@@ -10,7 +11,7 @@ const SearchUser = () => {
 
   useEffect(()=>{
     const fetchUsers = async () => {
-      const response = await axios.get(`/api/v1/users/search?searchedUser=${searchVal}`)
+      const response = await axios.get(`${API_BASE}/api/v1/users/search?searchedUser=${searchVal}`)
       setFetchedUsers(response.data.data) 
       console.log(response.data.data)
     }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import { BsHandThumbsUp } from "react-icons/bs";
 import { BsHandThumbsUpFill } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa"
@@ -15,7 +16,7 @@ const ProfilePostContainer = (props) => {
 
   useEffect(()=>{
     const fetchLike = async ()=>{
-      const response = await axios.get(`/api/v1/likes/isLiked/${post._id}`) 
+      const response = await axios.get(`${API_BASE}/api/v1/likes/isLiked/${post._id}`) 
       setIsLiked(response.data.data)
     }  
 
@@ -24,7 +25,7 @@ const ProfilePostContainer = (props) => {
 
   useEffect(() => {
     const fetchTotalLikes = async()=>{
-      const totalLikes = await axios.get(`/api/v1/likes/totalLikes/${post._id}`)
+      const totalLikes = await axios.get(`${API_BASE}/api/v1/likes/totalLikes/${post._id}`)
       setTotalLikes(totalLikes.data.data)
     }
 
@@ -33,9 +34,9 @@ const ProfilePostContainer = (props) => {
   
 
   const handleLike = async () =>{
-    const likeResponse = await axios.post(`/api/v1/likes/toggleLike/${post._id}`) 
+    const likeResponse = await axios.post(`${API_BASE}/api/v1/likes/toggleLike/${post._id}`) 
 
-    const isLikedResponse = await axios.get(`/api/v1/likes/isLiked/${post._id}`)
+    const isLikedResponse = await axios.get(`${API_BASE}/api/v1/likes/isLiked/${post._id}`)
     setIsLiked(isLikedResponse.data.data)
   }
 

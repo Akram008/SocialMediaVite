@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import Header from '../../components/Header/Header'
 import NavigationTab from '../../components/NavigationTab/NavigationTab'
 import axios from 'axios'
@@ -17,7 +18,7 @@ const AddPost = () => {
   const handleSubmit = async (e) =>{
     e.preventDefault() 
     try {
-      const response = await axios.post('/api/v1/posts/createPost', post)
+      const response = await axios.post(`${API_BASE}/api/v1/posts/createPost`, post, {withCredentials: true})
       console.log(response)
     } catch (error) {
       console.log(error)

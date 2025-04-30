@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import { FaArrowRight } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import CommentBlock from './CommentBlock';
@@ -13,7 +14,7 @@ const CommentSection = (props) => {
 
   useEffect(()=>{
     const fetchComments = async () => {
-        const commentsResponse = await axios.get(`/api/v1/comments/getComments/${feedId}`) 
+        const commentsResponse = await axios.get(`${API_BASE}/api/v1/comments/getComments/${feedId}`) 
         setComments(commentsResponse.data.data)  
         console.log(commentsResponse)
     }
@@ -38,7 +39,7 @@ const CommentSection = (props) => {
   const handleCommentSubmit = async (e) => {
     e.preventDefault() 
 
-    const newCommentRes = await axios.post(`/api/v1/comments/addComment/${feedId}`, {comment: newComment}) 
+    const newCommentRes = await axios.post(`${API_BASE}/api/v1/comments/addComment/${feedId}`, {comment: newComment}) 
     setLatestComment(newCommentRes.data.data)
     setNewComment('')
   }

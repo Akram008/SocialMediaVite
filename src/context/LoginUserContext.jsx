@@ -1,4 +1,5 @@
 import axios from 'axios'
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import {createContext, React, useContext, useEffect, useState} from 'react'
 
 const LoggedInContext = createContext()
@@ -11,7 +12,7 @@ export function LoggedInProvider({children}){
     useEffect(() => {
       const fetchedLogginUser = async() =>{
         try {
-            const response = await axios.get('/api/v1/users/current-user')   
+            const response = await axios.get(`${API_BASE}/api/v1/users/current-user`)   
             setLoggedInUser(response.data.data)
         } catch (error) {
             console.log(error)

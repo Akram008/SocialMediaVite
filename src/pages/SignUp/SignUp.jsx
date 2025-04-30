@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import axios from 'axios'
 import Part1 from '../../components/SignUpFields/Part1'
 import Part2 from '../../components/SignUpFields/Part2'
@@ -34,7 +35,7 @@ const SignUp = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post('/api/v1/users/register', userDetails, {
+      const response = await axios.post(`${API_BASE}/api/v1/users/register`, userDetails, {
         headers: {"Content-Type": "multipart/form-data"}
       })
       console.log(response.data.message)

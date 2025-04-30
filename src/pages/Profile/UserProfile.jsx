@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { Link, useLoaderData } from 'react-router-dom';
 import './index.css'
@@ -16,15 +17,15 @@ const UserProfile = () => {
 
   useEffect(() => {
     ;(async () => {
-      const response = await axios.get('/api/v1/posts/loggedInUserPosts')
+      const response = await axios.get(`${API_BASE}/api/v1/posts/loggedInUserPosts`)
       setPosts(response.data.data)
     })()
   }, [])
 
   useEffect(()=>{
     const fetchUserTracks = async()=>{
-        const trackersResponse = await axios.get(`/api/v1/tracks/loggedInUserTrackers`) 
-        const trackingsResponse = await axios.get(`/api/v1/tracks/loggedInUserTrackings`) 
+        const trackersResponse = await axios.get(`${API_BASE}/api/v1/tracks/loggedInUserTrackers`) 
+        const trackingsResponse = await axios.get(`${API_BASE}/api/v1/tracks/loggedInUserTrackings`) 
         
         setTracksData({trackers: trackersResponse.data.data, trackings: trackingsResponse.data.data})
     }

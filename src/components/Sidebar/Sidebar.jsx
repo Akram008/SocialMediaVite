@@ -1,4 +1,5 @@
 import React from 'react'
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import { RxCross1 } from "react-icons/rx";
 import { useSidebarToggle } from '../../context/sidebarContext';
 import { Link, useNavigate } from 'react-router-dom';
@@ -12,7 +13,7 @@ const Sidebar = () => {
 
   const onLogout = async () =>{
     try {
-        const response = await axios('/api/v1/users/logout', {withCredentials: true})
+        const response = await axios(`${API_BASE}/api/v1/users/logout`, {withCredentials: true})
         console.log(response)
         navigate('/login')
         toggleSidebar()
