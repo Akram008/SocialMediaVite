@@ -56,10 +56,7 @@ const OtherUserProfile = () => {
     const trackButton = () => {
         return isTracked ? <button className='bg-transparent border-2 border-[#e5dede] text-[#e5dede] font-bold py-1 px-3 rounded-2xl self-end duration-700' onClick={handleTrack}>Tracked</button> : <button className='bg-[#e5dede] border-none py-1 px-3 font-bold rounded-2xl self-end duration-700' onClick={handleTrack}>Track</button>
     }
-
-    console.log(tracksData)
-
-
+    
   return (
     <div className='user-profile-container w-full min-h-screen bg-[#121212] flex flex-col items-start p-2'>
     <div className='flex justify-start items-center p-5'>

@@ -6,21 +6,26 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 const ProtectedRoute = () => {
   const [loggedInUser, setLoggedInUser] = useState({})
-  const [accessGiven, setAccessGiven] = useState(true)
+  const [accessGiven, setAccessGiven] = useState(false)
   useEffect(()=>{
-    const fetchAuthentication = async() => {
-      const isAuthenticateRes = await axios.get(`${API_BASE}/api/v1/users/me`, {withCredentials: true})
-      console.log(isAuthenticateRes.data)
-      setLoggedInUser(isAuthenticateRes.data.user)
+    try {
+      const fetchAuthentication = async() => {
+        const isAuthenticateRes = await axios.get(`${API_BASE}/api/v1/users/me`, {withCredentials: true})
+        console.log(isAuthenticateRes.data)
+        setLoggedInUser(isAuthenticateRes.data.user)
+      }
+
+      fetchAuthentication()
+    } catch (error) {
+      setLoggedInUser({})
     }
-  
-    
-    fetchAuthentication()
   },[])
   
   useEffect(()=>{
-    console.log(loggedInUser)
+    setAccessGiven(prev=> !prev)
   },[loggedInUser])
+
+  console.log(accessGiven)
 
 
   return accessGiven ? <Outlet/> : <Navigate to='/login' replace/> 

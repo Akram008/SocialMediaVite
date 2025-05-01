@@ -13,7 +13,6 @@ const SearchUser = () => {
     const fetchUsers = async () => {
       const response = await axios.get(`${API_BASE}/api/v1/users/search?searchedUser=${searchVal}`, {withCredentials: true})
       setFetchedUsers(response.data.data) 
-      console.log(response.data.data)
     }
     fetchUsers()
   },[searchVal])

@@ -19,7 +19,6 @@ const AddPost = () => {
     e.preventDefault() 
     try {
       const response = await axios.post(`${API_BASE}/api/v1/posts/createPost`, post, {withCredentials: true})
-      console.log(response)
     } catch (error) {
       console.log(error)
     }

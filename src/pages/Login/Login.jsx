@@ -19,7 +19,6 @@ const Login = () => {
 
     try {
       const response = await axios.post(`${API_BASE}/api/v1/users/login`, {username: username, password: password}, {withCredentials: true})
-      console.log(response) 
       navigate('/')
       window.location.reload()
     } catch (error) {

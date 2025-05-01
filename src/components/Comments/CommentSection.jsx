@@ -16,7 +16,6 @@ const CommentSection = (props) => {
     const fetchComments = async () => {
         const commentsResponse = await axios.get(`${API_BASE}/api/v1/comments/getComments/${feedId}`) 
         setComments(commentsResponse.data.data)  
-        console.log(commentsResponse)
     }
 
     fetchComments()
@@ -43,7 +42,6 @@ const CommentSection = (props) => {
     setLatestComment(newCommentRes.data.data)
     setNewComment('')
   }
-  console.log(comments)
   return (
         <div className={`w-full h-100 bg-[#332f2f] fixed left-0 right-0 bottom-0 rounded-t-2xl z-20 transform ease-in-out transition-transform duration-300 ${showComments ? 'translate-y-0' : "translate-y-full"}`}>
             

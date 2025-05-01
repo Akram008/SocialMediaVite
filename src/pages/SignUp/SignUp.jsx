@@ -38,7 +38,6 @@ const SignUp = () => {
       const response = await axios.post(`${API_BASE}/api/v1/users/register`, userDetails, {withCredentials: true}, {
         headers: {"Content-Type": "multipart/form-data"}
       })
-      console.log(response.data.message)
       
       setTimeout(() => {
         navigate('/')
@@ -51,7 +50,6 @@ const SignUp = () => {
 
   const increaseStepCounter = () => setStepCounter(stepCounter+1)
 
-  console.log(userDetails)
   return (
     <div className='h-screen w-full bg-[#121212] p-15'>
         <h1 className='text-white text-3xl text-center mt-10'>Sign Up</h1>
