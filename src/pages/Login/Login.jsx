@@ -28,7 +28,7 @@ const Login = () => {
 
   return (
     <div className='h-screen w-full bg-[#121212] flex flex-col justify-center items-center'>
-        <h1 className='text-2xl text-white mb-20'>Project Name</h1>
+        <h1 className='text-2xl text-white mb-20 font-semibold'>The Quite Page</h1>
         <form className='flex flex-col w-full px-15' onSubmit={handleFormSubmit}>
             <label htmlFor='username' className='mb-1 text-white'>Username</label>
             <input type="text" value={username} name="username" onChange={handleUsername} id="username" className='bg-[#e5dede] h-8 mb-5 border-none' />
