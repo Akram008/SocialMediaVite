@@ -13,7 +13,7 @@ const Sidebar = () => {
 
   const onLogout = async () =>{
     try {
-        const response = await axios(`${API_BASE}/api/v1/users/logout`, {withCredentials: true})
+        const response = await axios.get(`${API_BASE}/api/v1/users/logout`, {withCredentials: true})
         console.log(response)
         navigate('/login')
         toggleSidebar()

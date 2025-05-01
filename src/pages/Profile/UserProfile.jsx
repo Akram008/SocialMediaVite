@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './index.css'
 import ProfilePostContainer from '../../components/FeedContainer/ProfilePostContainer';
 import { useLoggedInUser } from '../../context/LoginUserContext';

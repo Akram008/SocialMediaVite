@@ -2,7 +2,7 @@ import React from 'react'
 import { RiHomeLine } from "react-icons/ri";
 import { IoCreateOutline, IoSearchOutline } from "react-icons/io5";
 import { PiNotificationFill } from "react-icons/pi";
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const NavigationTab = () => {
   return (

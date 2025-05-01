@@ -34,7 +34,7 @@ const ProfilePostContainer = (props) => {
   
 
   const handleLike = async () =>{
-    const likeResponse = await axios.post(`${API_BASE}/api/v1/likes/toggleLike/${post._id}`, {withCredentials: true}) 
+    const likeResponse = await axios.post(`${API_BASE}/api/v1/likes/toggleLike/${post._id}`, {}, {withCredentials: true}) 
 
     const isLikedResponse = await axios.get(`${API_BASE}/api/v1/likes/isLiked/${post._id}`, {withCredentials: true})
     setIsLiked(isLikedResponse.data.data)

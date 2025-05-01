@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 const API_BASE = import.meta.env.VITE_API_BASE_URL;
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { Link, useParams, useNavigate} from 'react-router-dom';
+import { useParams, useNavigate} from 'react-router-dom';
 import './index.css'
 import ProfilePostContainer from '../../components/FeedContainer/ProfilePostContainer';
 import axios from 'axios';
@@ -47,7 +47,7 @@ const OtherUserProfile = () => {
     },[isTracked])
 
     const handleTrack = async () =>{
-        const response = await axios.post(`${API_BASE}/api/v1/tracks/trackUser/${userId}`, {withCredentials: true}) 
+        const response = await axios.post(`${API_BASE}/api/v1/tracks/trackUser/${userId}`, {}, {withCredentials: true}) 
 
         const isTrackResponse = await axios.get(`${API_BASE}/api/v1/tracks/isTrack/${userId}`, {withCredentials: true})
         setIsTracked(isTrackResponse.data.data)
