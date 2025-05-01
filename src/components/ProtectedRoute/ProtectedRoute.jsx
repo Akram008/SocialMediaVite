@@ -5,7 +5,7 @@ import axios from 'axios'
 import { Navigate, Outlet } from 'react-router-dom'
 
 const ProtectedRoute = () => {
-  const [accessGiven, setAccessGiven] = useState(false)
+  const [accessGiven, setAccessGiven] = useState(true)
   useEffect(()=>{
     const fetchAuthentication = async() => {
       const isAuthenticateRes = await axios.get(`${API_BASE}/api/v1/users/me`, {withCredentials: true})
