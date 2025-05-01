@@ -11,12 +11,16 @@ const ProtectedRoute = () => {
     const fetchAuthentication = async() => {
       const isAuthenticateRes = await axios.get(`${API_BASE}/api/v1/users/me`, {withCredentials: true})
       console.log(isAuthenticateRes.data)
+      setLoggedInUser(isAuthenticateRes.data.user)
     }
   
     
     fetchAuthentication()
   },[])
-  console.log(accessGiven)
+  
+  useEffect(()=>{
+    console.log(loggedInUser)
+  },[loggedInUser])
 
 
   return accessGiven ? <Outlet/> : <Navigate to='/login' replace/> 
