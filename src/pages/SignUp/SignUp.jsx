@@ -35,9 +35,9 @@ const SignUp = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post(`${API_BASE}/api/v1/users/register`, userDetails, {withCredentials: true}, {
-        headers: {"Content-Type": "multipart/form-data"}
-      })
+      const response = await axios.post(`${API_BASE}/api/v1/users/register`, userDetails, {
+        headers: {"Content-Type": "multipart/form-data"} 
+      }, {withCredentials: true})
       
       setTimeout(() => {
         navigate('/')
