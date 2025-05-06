@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 import { BsHandThumbsUp } from "react-icons/bs";
 import { BsHandThumbsUpFill } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa"
 import axios from 'axios';
 import CommentSection from '../Comments/CommentSection';
+import { useLoggedInUser } from '../../context/LoginUserContext';
+
 
 const FeedContainer = (props) => {
+  const {loggedInUser} = useLoggedInUser()
   const [isLiked, setIsLiked] = useState(false)
   const [totalLikes, setTotalLikes] = useState(0)
   const [totalComments, setTotalcomments] = useState(0)
@@ -19,7 +22,7 @@ const FeedContainer = (props) => {
       const response = await axios.get(`${API_BASE}/api/v1/likes/isLiked/${feed._id}`, {withCredentials: true}) 
       setIsLiked(response.data.data)
     }  
-
+  
     fetchLike()
   },[])
 
@@ -32,7 +35,6 @@ const FeedContainer = (props) => {
     fetchTotalLikes()
   }, [isLiked])
   
-
   const handleLike = async () =>{
     const likeResponse = await axios.post(`${API_BASE}/api/v1/likes/toggleLike/${feed._id}`, {}, {withCredentials: true}) 
 

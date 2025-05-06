@@ -1,5 +1,5 @@
 import React from 'react'
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 import { RxCross1 } from "react-icons/rx";
 import { useSidebarToggle } from '../../context/sidebarContext';
 import { Link, useNavigate } from 'react-router-dom';

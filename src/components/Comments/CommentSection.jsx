@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 import { FaArrowRight } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import CommentBlock from './CommentBlock';
@@ -14,7 +14,7 @@ const CommentSection = (props) => {
 
   useEffect(()=>{
     const fetchComments = async () => {
-        const commentsResponse = await axios.get(`${API_BASE}/api/v1/comments/getComments/${feedId}`) 
+        const commentsResponse = await axios.get(`${API_BASE}/api/v1/comments/getComments/${feedId}`, {withCredentials: true}) 
         setComments(commentsResponse.data.data)  
     }
 

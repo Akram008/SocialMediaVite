@@ -1,5 +1,5 @@
 import {React, useEffect, useState } from "react"
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 import FeedContainer from "../../components/FeedContainer/FeedContainer.jsx"
 import Header from "../../components/Header/Header.jsx"
 import NavigationTab from "../../components/NavigationTab/NavigationTab.jsx"

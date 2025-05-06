@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useParams, useNavigate} from 'react-router-dom';
 import './index.css'
