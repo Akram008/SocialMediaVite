@@ -44,7 +44,14 @@ const ProfilePostContainer = (props) => {
   useEffect(() => {
     if (post?._id) {
       const createdDate = getCreatedDateFromObjectId(post._id);
-      setPostDate(createdDate.toLocaleString());
+      setPostDate(createdDate.toLocaleString("en-GB", {
+        day: 'numeric', 
+        month: 'short', 
+        year: 'numeric', 
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      }));
     }
   }, []);
 
