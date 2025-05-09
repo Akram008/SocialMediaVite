@@ -3,6 +3,10 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 import { BsHandThumbsUp } from "react-icons/bs";
 import { BsHandThumbsUpFill } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa"
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
+import { CiEdit } from "react-icons/ci";
 import CommentSection from '../Comments/CommentSection';
 import axios from 'axios';
 
@@ -13,6 +17,7 @@ const ProfilePostContainer = (props) => {
   const [totalLikes, setTotalLikes] = useState(0)
   const [totalComments, setTotalcomments] = useState(0)
   const [showComments, setShowComments] = useState(false)
+  const [editBtn, setEditBtn] = useState(false)
 
   useEffect(()=>{
     const fetchLike = async ()=>{
@@ -32,6 +37,15 @@ const ProfilePostContainer = (props) => {
     fetchTotalLikes()
   }, [isLiked])
   
+  const handleDelelte = async () => {
+    try {
+      const res = await axios.delete(`${API_BASE}/api/v1/posts/deletePost/${post._id}`, {withCredentials: true})
+      console.log(res.data)
+    } catch (error) {
+      console.log(`post deletion error: ${error}`)
+    } 
+
+  }
 
   const handleLike = async () =>{
     const likeResponse = await axios.post(`${API_BASE}/api/v1/likes/toggleLike/${post._id}`, {}, {withCredentials: true}) 
@@ -81,6 +95,20 @@ const ProfilePostContainer = (props) => {
                             <FaRegComment/> 
                             <p className='text-sm'>{totalComments}</p>
                         </button>
+                    </div>
+
+                    <div className='flex items-center gap-2'>
+                      {editBtn && <button className='text-md border-1 border-red-600 rounded-lg p-2 text-red-600 bg-white' onClick={handleDelelte}>
+                        <FaRegTrashAlt/>
+                      </button>}
+
+                      {editBtn && <button className='text-md text-emerald-600 bg-white p-2 rounded-lg'>
+                        <CiEdit/>
+                      </button>}
+
+                      <button className='bg-transparent border-0 flex items-center text-2xl text-white' onClick={()=>setEditBtn(prev => !prev)}>
+                        {editBtn ? <RxCross2/> : <HiOutlineDotsHorizontal/>}
+                      </button>
                     </div>
                 </div>
         </div>
