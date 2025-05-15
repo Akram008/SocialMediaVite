@@ -9,8 +9,10 @@ import { RxCross2 } from "react-icons/rx";
 import { CiEdit } from "react-icons/ci";
 import CommentSection from '../Comments/CommentSection';
 import axios from 'axios';
+import { useLoggedInUser } from '../../context/LoginUserContext';
 
 const ProfilePostContainer = (props) => {
+  const {loggedInUser} = useLoggedInUser()
   const {post} = props 
   const [postDate, setPostDate] = useState(null)
   const [isLiked, setIsLiked] = useState(false)
@@ -140,9 +142,9 @@ const ProfilePostContainer = (props) => {
                         <CiEdit/>
                       </button>}
 
-                      <button className='bg-transparent border-0 flex items-center text-2xl text-white' onClick={()=>setEditBtn(prev => !prev)}>
+                      {loggedInUser._id.toLocaleString() === post.createdBy.toLocaleString() && <button className='bg-transparent border-0 flex items-center text-2xl text-white' onClick={()=>setEditBtn(prev => !prev)}>
                         {editBtn ? <RxCross2/> : <HiOutlineDotsHorizontal/>}
-                      </button>
+                      </button>}
                     </div>
                 </div>
           </div>

@@ -23,7 +23,7 @@ const AddPost = () => {
       setPost({
         title: '', 
         content: '', 
-        postType: ''
+        postType: 'Quotes'
       })
     } catch (error) {
       console.log(error)
@@ -32,8 +32,8 @@ const AddPost = () => {
 
   const successPopupContainer = () => (
       <div className="fixed inset-0 flex items-center justify-center bg-black/75 z-50 p-5">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
-            <h2 className="text-xl font-semibold mb-4">Successfully Posted!</h2>
+          <div className="bg-[#121212] p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
+            <h2 className="text-xl text-white font-semibold mb-4">Successfully Posted!</h2>
             <button
               onClick={() => setPostCreated(false)}
               className="px-4 py-2 bg-emerald-500 text-white rounded hover:bg-emerald-700"

@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import React from 'react'
 import './App.css'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes} from 'react-router-dom'
 import Home from './pages/Home/Home'
 import AddPost from './pages/AddPost/AddPost'
 import Login from './pages/Login/Login'
@@ -8,11 +8,10 @@ import SignUp from './pages/SignUp/SignUp'
 import UserProfile from './pages/Profile/UserProfile'
 import Sidebar from './components/Sidebar/Sidebar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
-import Header from './components/Header/Header'
 import SearchUser from './pages/Search/Search'
 import OtherUserProfile from './pages/Profile/OtherUserProfile'
 import Notification from './pages/Notification/Notification'
-import CommentSection from './components/Comments/CommentSection'
+import EditProfile from './pages/Profile/EditProfile'
 
 
 function App() {
@@ -27,6 +26,7 @@ function App() {
           <Route path='/notifications' element={<Notification/>}/>
           <Route path='/addPost' element={<AddPost/>} />
           <Route path='/user-profile' element={<UserProfile/>} />
+          <Route path='/edit-profile' element={<EditProfile/>} />
           <Route path='/user-profile/:userId' element={<OtherUserProfile/>} />
           <Route path='/search' element={<SearchUser/>} />
         </Route>

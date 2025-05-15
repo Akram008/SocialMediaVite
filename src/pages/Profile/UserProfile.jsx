@@ -42,7 +42,9 @@ const UserProfile = () => {
           <div className='w-20 h-20 rounded-full bg-black flex justify-center items-center'>
               <img src={loggedInUser.profilePic} className='h-full rounded-full' />
           </div>
-          <button className='text-[#e5dede] bg-transparent border-1 border-[#e5dede] px-3 py-1 rounded-md text-sm self-end'>Edit Profile</button>
+          <Link to='/edit-profile' className='self-end'>
+              <button className='text-[#e5dede] bg-transparent border-1 border-[#e5dede] px-3 py-1 rounded-md text-sm '>Edit Profile</button>
+          </Link>
         </div>
         <div className='p-5 w-full'>
           <h1 className='text-[#e5dede] font-light text-2xl mb-0'>{loggedInUser.firstName} {loggedInUser.lastName}</h1>
