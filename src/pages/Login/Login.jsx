@@ -8,6 +8,7 @@ import Cookies from 'js-cookie'
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [showError, setShowError] = useState(false)
   
   const handleUsername = (e) => setUsername(e.target.value)
   const handlePassword = (e) => setPassword(e.target.value)
@@ -23,6 +24,7 @@ const Login = () => {
       window.location.reload()
     } catch (error) {
       console.log(error)
+      setShowError(true)
     }
   }
 
@@ -38,6 +40,7 @@ const Login = () => {
 
             <button className='rounded-3xl bg-[#686767] py-2 text-xl text-white mt-10' type='submit'>Login</button>
         </form>
+        {showError ? <p className='text-red-500'>Invalid User Credentials!</p>: <p></p>}
         <p className='text-white mt-1'>Don't have an account? <span className='text-[#bd7676]'><Link to='/sign-up'>Sign_up</Link></span></p>
     </div>
   )

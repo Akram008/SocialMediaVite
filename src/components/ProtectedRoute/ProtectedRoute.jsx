@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Navigate, Outlet } from 'react-router-dom';
+import Cookies from 'js-cookie'
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
@@ -8,8 +9,22 @@ const ProtectedRoute = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [accessGiven, setAccessGiven] = useState(false);
   const [loading, setLoading] = useState(true); // optional but useful
+  useEffect(()=>{
+    const token = Cookies.get('accessToken') 
 
-  useEffect(() => {
+    if(token!==undefined){
+      setAccessGiven(true) 
+      setLoading(false)
+    }
+    else{
+      setAccessGiven(false)
+      setLoading(false)
+    }
+  },[])
+  
+
+
+  /*useEffect(() => {
     const fetchAuthentication = async () => {
       try {
         const res = await axios.get(`${API_BASE}/api/v1/users/me`, {
@@ -28,7 +43,7 @@ const ProtectedRoute = () => {
     };
 
     fetchAuthentication();
-  }, []);
+  }, []);*/
 
   if (loading){
     return ( 
