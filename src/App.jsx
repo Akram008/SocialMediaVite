@@ -12,6 +12,7 @@ import SearchUser from './pages/Search/Search'
 import OtherUserProfile from './pages/Profile/OtherUserProfile'
 import Notification from './pages/Notification/Notification'
 import EditProfile from './pages/Profile/EditProfile'
+import ChangePassword from './pages/ChangePassword/ChangePassword'
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path='/edit-profile' element={<EditProfile/>} />
           <Route path='/user-profile/:userId' element={<OtherUserProfile/>} />
           <Route path='/search' element={<SearchUser/>} />
+          <Route path='/change-password' element={<ChangePassword/>} />
         </Route>
       </Routes>
       

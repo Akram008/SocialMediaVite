@@ -34,6 +34,11 @@ const Sidebar = () => {
                     Your Profile
                 </li>
             </Link>
+            <Link to='/change-password' onClick={toggleSidebar}>
+                <li className='w-full border-l-4 text-2xl text-white pl-5 mb-8 font-light'>
+                    Change Password
+                </li>
+            </Link>
             <li className='w-full border-l-4 text-2xl text-white pl-5 mb-8 font-light'>
                 Liked Ones
             </li>

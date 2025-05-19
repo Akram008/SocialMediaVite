@@ -37,9 +37,9 @@ const FeedContainer = (props) => {
   
   const handleLike = async () =>{
     const likeResponse = await axios.post(`${API_BASE}/api/v1/likes/toggleLike/${feed._id}`, {}, {withCredentials: true}) 
-
-    const isLikedResponse = await axios.get(`${API_BASE}/api/v1/likes/isLiked/${feed._id}`, {withCredentials: true})
-    setIsLiked(isLikedResponse.data.data)
+    console.log(likeResponse)
+    likeResponse.data.message === 'Post is liked!' ? setIsLiked(true) : setIsLiked(false)
+    
   }
 
   return (
