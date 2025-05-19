@@ -8,19 +8,18 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 const ProtectedRoute = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [accessGiven, setAccessGiven] = useState(false);
-  const [loading, setLoading] = useState(true); // optional but useful
-  useEffect(()=>{
+  const [loading, setLoading] = useState(false); // optional but useful
+
+  //useEffect(()=>{
     const token = Cookies.get('accessToken') 
 
-    if(token!==undefined){
+    /*if(token!==undefined){
       setAccessGiven(true) 
-      setLoading(false)
     }
     else{
       setAccessGiven(false)
-      setLoading(false)
     }
-  },[])
+  },[])*/
   
 
 
@@ -53,7 +52,7 @@ const ProtectedRoute = () => {
     )
   } // Optional loader
 
-  return accessGiven ? <Outlet /> : <Navigate to="/login" replace />;
+  return token!==undefined ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default ProtectedRoute;
