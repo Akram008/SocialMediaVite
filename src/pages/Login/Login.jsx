@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post(`/api/v1/users/login`, {username: username, password: password}, {withCredentials: true})
+      const response = await axios.post(`${API_BASE}/api/v1/users/login`, {username: username, password: password}, {withCredentials: true})
       navigate('/')
       window.location.reload()
     } catch (error) {
