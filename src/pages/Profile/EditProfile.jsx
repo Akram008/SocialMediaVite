@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useLoggedInUser } from '../../context/LoginUserContext';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const EditProfile = () => {
    const {loggedInUser} = useLoggedInUser()
@@ -16,8 +17,10 @@ const EditProfile = () => {
     bio: ''
    }) 
    const [profilePic, setProfilePic] = useState('')
-
    const [previewProfile, setPreviewProfile] = useState('')
+   const [updateSuccess, setUpdateSuccess] = useState(false)
+
+   const navigate = useNavigate() 
 
    const handleChange = (e) => {
     setUserDetails({...userDetails, [e.target.name]: e.target.value})
@@ -48,19 +51,37 @@ const EditProfile = () => {
         if(profilePic !== ''){
           const profilePicRes = await axios.patch(`${API_BASE}/api/v1/users/updateUserProfilePic`, {profilePic: profilePic}, {headers: {"Content-Type": "multipart/form-data"}, withCredentials: true}) 
         } 
+        setUpdateSuccess(true)
     } catch (error) {
         console.log(error)
     }
    }
 
+   const handleSuccessUpdation = () => {
+    setUpdateSuccess(false) 
+    navigate('/user-profile')
+   }
+
+   const successUpdatePopup = () => {
+    return(
+      <div className='fixed left-0 top-0 h-screen w-full bg-black/75 flex items-center justify-center p-3'>
+        <div className='bg-[#121212] p-5 flex flex-col items-center gap-5 rounded-xl'>
+          <p className='text-xl text-white font-semibold'>Successfully Updated!</p>
+          <button className='text-emerald-600 border-1 border-emerald-600 rounded-4xl px-4 py-2' onClick={handleSuccessUpdation}>Done</button>
+        </div>
+      </div>
+    )
+   }
+
   return (
     <div className='min-h-screen w-full bg-[#121212] pb-5'>
+        {updateSuccess && successUpdatePopup()}
         <div className='flex justify-start items-center p-5 w-full'>
             <Link to="/user-profile" className='text-white text-2xl'><FaArrowLeftLong/></Link>
         </div>
         <form className='w-full flex flex-col justify-center items-center gap-4 p-5' onSubmit={handleSubmit}>
           <div className='w-20 h-20 rounded-full bg-black flex justify-center relative items-center'>
-            <img src={previewProfile} className='h-full rounded-full opacity-50' />
+            <img src={previewProfile} alt='' className='h-full rounded-full opacity-50' />
             <input type='file' onChange={handleFileChange} name='profilePic' className='absolute top-0 left-0 text-white opacity-0 w-full z-10'/> 
             <p className='w-full h-full absolute top-0 left-0 flex items-center justify-center text-2xl text-white'>+</p>
           </div>

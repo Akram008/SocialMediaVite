@@ -12,7 +12,7 @@ const ProtectedRoute = () => {
   useEffect(() => {
     const fetchAuthentication = async () => {
       try {
-        const res = await axios.get(`${API_BASE}/api/v1/users/me`, {
+        const res = await axios.get(`/api/v1/users/me`, {
           withCredentials: true,
         });
 
