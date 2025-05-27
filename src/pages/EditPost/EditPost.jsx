@@ -51,7 +51,6 @@ const EditPost = () => {
 
     fetchPostDetails()
    }, [])
-   console.log(postData)
 
    const handlePostDataChange = (e) => {
     setPostData({...postData, [e.target.name]: e.target.value})
@@ -67,7 +66,7 @@ const EditPost = () => {
 
     try {
         const updateRes = await axios.patch(`${API_BASE}/api/v1/posts/updatePost/${postId}`, postData, {withCredentials: true})  
-        console.log(updateRes.data.data)
+        setUpdateSuccess(true)
     } catch (error) {
         console.log(error)
     }
