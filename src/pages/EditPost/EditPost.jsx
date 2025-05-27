@@ -35,7 +35,7 @@ const EditPost = () => {
     content: '', 
     postType: ''
    })
-   const [updateSuccess, setUpdateSuccess] = useState(true)
+   const [updateSuccess, setUpdateSuccess] = useState(false)
 
    const navigate = useNavigate()
 
