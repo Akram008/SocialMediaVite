@@ -13,6 +13,7 @@ import OtherUserProfile from './pages/Profile/OtherUserProfile'
 import Notification from './pages/Notification/Notification'
 import EditProfile from './pages/Profile/EditProfile'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import EditPost from './pages/EditPost/EditPost'
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path='/user-profile/:userId' element={<OtherUserProfile/>} />
           <Route path='/search' element={<SearchUser/>} />
           <Route path='/change-password' element={<ChangePassword/>} />
+          <Route path='/edit-post/:postId' element={<EditPost/>} />
         </Route>
       </Routes>
       

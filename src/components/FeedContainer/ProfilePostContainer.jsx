@@ -10,6 +10,7 @@ import { CiEdit } from "react-icons/ci";
 import CommentSection from '../Comments/CommentSection';
 import axios from 'axios';
 import { useLoggedInUser } from '../../context/LoginUserContext';
+import { Link } from 'react-router-dom';
 
 const ProfilePostContainer = (props) => {
   const {loggedInUser} = useLoggedInUser()
@@ -139,7 +140,9 @@ const ProfilePostContainer = (props) => {
                       </button>}
 
                       {editBtn && <button className='text-md text-emerald-600 bg-white p-2 rounded-lg'>
-                        <CiEdit/>
+                        <Link to={`/edit-post/${post._id}`}>
+                          <CiEdit/>
+                        </Link>
                       </button>}
 
                       {loggedInUser._id.toLocaleString() === post.createdBy.toLocaleString() && <button className='bg-transparent border-0 flex items-center text-2xl text-white' onClick={()=>setEditBtn(prev => !prev)}>
